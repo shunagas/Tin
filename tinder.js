@@ -1,8 +1,8 @@
-tinderLike()
+tinderAutoSwipe()
 
-let timerId = null; // タイマーIDを保存するためのグローバル変数
+let timer = null; // タイマーIDを保存するためのグローバル変数
 
-function tinderLike() {
+function tinderAutoSwipe() {
     const minTime = 1, maxTime = 2; // 次のアクションまでのランダムな待機時間の範囲
     const rand_time = Math.floor(Math.random() * (maxTime - minTime + 1) + minTime); // 次のアクションまでのランダムな待機時間
     const minFlag = 1, maxFlag = 10; // "LIKE"の選択比率を調整するための範囲
@@ -22,17 +22,17 @@ function tinderLike() {
     } catch(e) {
       console.log("An error occurred, stopping the function: " + e.message);
 　　 // エラーメッセージをログに記録
-        stopTinderLike(); // 関数を停止
+        stopTinderSwipe(); // 関数を停止
     }
     // setTimeout を呼び出す際に返されるタイマーIDを保存
-    timerId = setTimeout(tinderLike, rand_time * 1000);
+    timer = setTimeout(tinderLike, rand_time * 1000);
 }
 
 // この関数を呼び出して tinderLike を停止
-function stopTinderLike() {
-    if(timerId !== null) 
+function stopTinderSwipe() {
+    if(timer !== null) 
     {
-        clearTimeout(timerId);
-        timerId = null; // タイマーが停止されたことを示す
+        clearTimeout(timer);
+        timer = null; // タイマーが停止されたことを示す
     }
 }
